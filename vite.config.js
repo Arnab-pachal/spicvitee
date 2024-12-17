@@ -9,5 +9,8 @@ export default defineConfig({
   css: {
     postcss: './postcss.config.js',  // Optional, if you want to explicitly specify PostCSS config
   },
+  preview: {
+    port: 8080, // Replace with the port your application should listen on
+  },
   base: '/',  // Define the base path for your app (update this for deployment if necessary)
 });
