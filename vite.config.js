@@ -4,7 +4,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'build',
+    outDir: 'build',  // Specifies the output directory for the build
   },
-  base: '/my-app/', // Update this to match your app's deployment path
+  css: {
+    postcss: './postcss.config.js',  // Optional, if you want to explicitly specify PostCSS config
+  },
+  base: '/',  // Define the base path for your app (update this for deployment if necessary)
 });
