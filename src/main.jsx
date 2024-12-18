@@ -4,10 +4,9 @@ import './index.css';
 import App from './App.jsx';
 
 // The root element is #root inside the body of the index.html
-const rootElement = document.getElementById('root');
-
-createRoot(rootElement).render(
+createRoot(document.body).render(
   <StrictMode>
     <App />
   </StrictMode>
 );
+Explanatio

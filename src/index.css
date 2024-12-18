@@ -1,7 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
-  background-image: url("./components/images/bgimg.jpg");
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image:url("./components/images/bgimg.jpg");
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
