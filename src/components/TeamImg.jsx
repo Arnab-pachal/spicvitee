@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function TeamImg({name,src,post,year,facebook,insta}) {
-    const img = `../../public/${year}/${src}.jpg`
+    const img = `/${year}/${src}.jpg`
     const [blur, setBlur] = useState(0)
     return (
         <>

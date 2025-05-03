@@ -83,7 +83,7 @@ const PhotoGallery = () => {
 
   const deleteRoute = async (id) => {
     let value = await getItemWithExpiry("s-id");
-    if (value == null) {
+    if (value == null ) {
       alert("You have no access to delete. Please log in.");
       navigate("/login");
     } else {

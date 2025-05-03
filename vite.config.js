@@ -4,18 +4,18 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'build',  // Specifies the output directory for the build
+    outDir: 'build', 
   },
   css: {
-    postcss: './postcss.config.js',  // Optional, if you want to explicitly specify PostCSS config
+    postcss: './postcss.config.js',
   },
   server: {
-    host: '0.0.0.0', // Ensures the server is accessible externally
-    port: 5173,      // Replace with the port your application should listen on
+    host: '0.0.0.0', 
+    port: 5173,    
   },
   preview: {
-    host: '0.0.0.0', // Ensures the preview server is accessible externally
-    port: 5173,      // Replace with the port your application should listen on
+    host: '0.0.0.0',
+    port: 5173,    
   },
-  base: '/',  // Define the base path for your app (update this for deployment if necessary)
+  base: '/', 
 });
