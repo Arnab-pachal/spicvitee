@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+[data-theme='light'], .light-theme {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+[data-theme='dark'], .dark-theme {
+  background-color: yellow;
+  color: #ffffff;
+}

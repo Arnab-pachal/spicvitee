@@ -13,7 +13,7 @@ import useColorScheme from './components/useColorScheme.js';
 
 
 function App() {
-  const dark = useColorScheme('dark');
+  const dark = useColorScheme('light');
 
   return (
     <div className={`max-w-[1600px] items-center justify-between mx-auto ${dark ? 'dark-theme' : 'light-theme'}`}>
