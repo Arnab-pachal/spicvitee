@@ -46,11 +46,7 @@ const PresentTeam = () => {
 
       <div className="text-sm my-4 font-medium text-center text-gray-500 dark:text-gray-400 ">
         <ul className="flex flex-wrap -mb-px">
-          <li className="mr-2">
-            <p onClick={()=>{setYear({passout24:1,final:0,prefinal:0,second:0})}} aria-current="page" 
-            href="#" 
-            className={`inline-block cursor-pointer p-4  border-b-2  rounded-t-lg ${!year.passout24 && " hover:text-gray-500 hover:border-gray-500 dark:hover:text-gray-300 border-transparent "} ${year.passout24 && "text-red-500 border-red-600 dark:text-blue-500 dark:border-red-500 font-bold "}`}>24' Passout</p>
-          </li>
+          
           <li className="mr-2">
             <p onClick={()=>{setYear({passout24:0,final:1,prefinal:0,second:0})}} aria-current="page" href="#" className={`inline-block cursor-pointer p-4 border-b-2  rounded-t-lg ${!year.final && "hover:text-gray-500 hover:border-gray-500 dark:hover:text-gray-300 border-transparent"} ${year.final && "text-red-500 border-red-600 dark:text-blue-500 dark:border-red-500 font-bold"}`}>Final Years</p>
           </li>

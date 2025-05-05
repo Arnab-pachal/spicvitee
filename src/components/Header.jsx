@@ -19,8 +19,14 @@ const Header = ({ dark, onToggleTheme }) => {
           to="/"
           className="flex title-font font-medium items-center mb-4 md:mb-0"
         >
-          <img src={dark ? dark_logo : light_logo} alt="Spicmacay" width={150} height={200} />
+          <img
+            src={dark ? dark_logo : light_logo}
+            alt="Spicmacay"
+            width={150}
+            height={200}
+          />
         </Link>
+
         <nav
           className={`md:mr-auto md:ml-4 md:py-1 md:pl-4 flex flex-wrap items-center text-base justify-center ${
             dark ? 'md:border-red-900' : 'md:border-black'
@@ -29,31 +35,63 @@ const Header = ({ dark, onToggleTheme }) => {
           {[
             { to: '/', label: 'Home' },
             { to: '/gallery', label: 'Gallery' },
-            
             { to: '/team', label: 'Team' },
             { to: '/events', label: 'Events' },
-            { to: '/contact', label: 'Contact Us' },
           ].map(({ to, label }) => (
             <Link
               key={to}
               to={to}
               className={`mr-5 ${
-                location.pathname === to
-                  ? 'border-b-2 border-red-500'
-                  : ''
+                location.pathname === to ? 'border-b-2 border-red-500' : ''
               } ${dark ? 'hover:text-blue-500' : 'hover:text-red-500'}`}
             >
               {label}
             </Link>
           ))}
 
-          <a
-            href="https://virasat-eta.vercel.app/"
-            className={`mr-5 ${dark ? 'hover:text-blue-500' : 'hover:text-black'}`}
+          {/* Virasat Dropdown */}
+          <div className="relative group mr-5">
+            <button
+              className={`focus:outline-none ${
+                dark ? 'hover:text-blue-500' : 'hover:text-black'
+              }`}
+            >
+              Virasat
+            </button>
+            <div className="absolute hidden group-hover:block bg-white text-black rounded shadow-lg z-10 min-w-[150px]">
+              <a
+                href="https://virasat-eta.vercel.app/"
+                className="block px-4 py-2 hover:bg-gray-200"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Virasat 2024
+              </a>
+              <a
+                href="https://virasat-eta.vercel.app/"
+                className="block px-4 py-2 hover:bg-gray-200"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Virasat 2025
+              </a>
+            </div>
+          </div>
+
+          {/* Contact Us Link */}
+          <Link
+            to="/contact"
+            className={`mr-5 ${
+              location.pathname === '/contact'
+                ? 'border-b-2 border-red-500'
+                : ''
+            } ${dark ? 'hover:text-blue-500' : 'hover:text-red-500'}`}
           >
-            Virasat
-          </a>
+            Contact Us
+          </Link>
         </nav>
+
+        {/* Theme Toggle Button */}
         <button
           className={`inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 ${
             dark
@@ -66,8 +104,6 @@ const Header = ({ dark, onToggleTheme }) => {
             {dark ? 'Light' : 'Dark'}
           </span>
         </button>
-       
-
       </div>
     </header>
   );

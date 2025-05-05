@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function TeamImg({ name, src, post, year, insta, linkedin="https://www.linkedin.com/in/arnab1/" }) {
+function TeamImg({ name, src, post, year, insta, linkedin }) {
     const img = `../../public/${year}/${src}.jpg`;
     const [blur, setBlur] = useState(0);
 
