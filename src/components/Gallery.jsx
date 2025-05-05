@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const PhotoGallery = () => {
+const PhotoGallery = ({isLoggedIn}) => {
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [file, setFile] = useState(null);
@@ -83,7 +83,7 @@ const PhotoGallery = () => {
 
   const deleteRoute = async (id) => {
     let value = await getItemWithExpiry("s-id");
-    if (value == null ) {
+    if (value == null) {
       alert("You have no access to delete. Please log in.");
       navigate("/login");
     } else {
@@ -140,7 +140,7 @@ const PhotoGallery = () => {
         </div>
 
         <div className="flex flex-col justify-center items-center mb-20">
-          <form onSubmit={handleUpload} encType="multipart/form-data">
+          {isLoggedIn && <form onSubmit={handleUpload} encType="multipart/form-data">
             <input
               id="formFile"
               className="form-control mb-2"
@@ -157,7 +157,7 @@ const PhotoGallery = () => {
             >
               {loading ? "Uploading..." : "Submit"}
             </button>
-          </form>
+          </form>}
         </div>
 
         <section className="gallery">
@@ -182,7 +182,7 @@ const PhotoGallery = () => {
                         e.currentTarget.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.1)";
                       }}
                     />
-                    <button
+                    {isLoggedIn && <button
                       type="button"
                       style={deleteButtonStyle}
                       onClick={() => deleteRoute(photo._id)}
@@ -190,7 +190,7 @@ const PhotoGallery = () => {
                       onMouseLeave={() => setIsHovered(false)}
                     >
                       Delete
-                    </button>
+                    </button>}
                   </div>
                 ))
               ) : (

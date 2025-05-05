@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const VideoGallery = () => {
+const VideoGallery = ({isLoggedIn}) => {
   const [videoFile, setVideoFile] = useState(null);
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -143,7 +143,7 @@ const VideoGallery = () => {
         </div>
 
         <div className="flex flex-col justify-center items-center mb-20">
-          <form onSubmit={handleUpload} encType="multipart/form-data">
+          {isLoggedIn && <form onSubmit={handleUpload} encType="multipart/form-data">
             <input
               id="videoFile"
               className="form-control mb-2"
@@ -166,7 +166,7 @@ const VideoGallery = () => {
             >
               {loading ? "Uploading..." : "Submit"}
             </button>
-          </form>
+          </form>}
         </div>
 
         <section className="gallery">
@@ -191,7 +191,7 @@ const VideoGallery = () => {
                         e.currentTarget.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.1)";
                       }}
                     ></video>
-                    <button
+                   {isLoggedIn && <button
                       type="button"
                       style={deleteButtonStyle}
                       onClick={() => handleDelete(video._id)}
@@ -199,7 +199,7 @@ const VideoGallery = () => {
                       onMouseLeave={() => setIsHovered(false)}
                     >
                       Delete
-                    </button>
+                    </button>}
                   </div>
                 ))
               ) : (

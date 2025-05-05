@@ -1,35 +1,76 @@
-import React from 'react'
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import dark_logo from './Logos/logo_dark.png'
-import light_logo from './Logos/logo_light.png'
+import dark_logo from './Logos/logo_dark.png';
+import light_logo from './Logos/logo_light.png';
 
+const Header = ({ dark, onToggleTheme }) => {
+  const location = useLocation();
 
-const Header = ({dark}) => {
-  const togglecolor = () => {
-    const theme = dark ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  };
-  const location = useLocation()
   return (
-    <header className="text-white-600 dark:bg-slate-800 dark:text-white body-font font-bold">
+    <header
+      className={`body-font font-bold ${
+        dark
+          ? 'bg-slate-800 text-white'
+          : 'bg-white text-black border-b border-black'
+      }`}
+    >
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <Link to={'/'} className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <img src={dark?dark_logo:light_logo} alt="Spicmacay" width={150} height={200} />
+        <Link
+          to="/"
+          className="flex title-font font-medium items-center mb-4 md:mb-0"
+        >
+          <img src={dark ? dark_logo : light_logo} alt="Spicmacay" width={150} height={200} />
         </Link>
-        <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-red-900 	flex flex-wrap items-center text-base justify-center">
-          <Link to={'/'} className={`mr-5 ${location.pathname==='/'?"border-b-2 border-red-500":""} dark:hover:text-blue-500 hover:text-red-500 `}>Home</Link>
-          <Link to={'/gallery'} className={`mr-5 ${location.pathname==='/gallery'?"border-b-2 border-red-500":""} dark:hover:text-blue-500 hover:text-red-500`}>Gallery</Link>
-          <Link to={'/video'} className={`mr-5 ${location.pathname==='/video'?"border-b-2 border-red-500":""} dark:hover:text-blue-500 hover:text-red-500`}>VideoGallery</Link>
-          <Link to={'/team'} className={`mr-5 ${location.pathname==='/team'?"border-b-2 border-red-500":""} dark:hover:text-blue-500 hover:text-red-500`}>Team</Link>
-          <Link to={'/events'} className={`mr-5 ${location.pathname==='/events'?"border-b-2 border-red-500":""} dark:hover:text-blue-500 hover:text-red-500`}>Events</Link>
-          <a href={'https://virasat-eta.vercel.app/'} className={`mr-5 dark:hover:text-blue-500 hover:text-gray-900 border-red-500`}>Virasat</a>
-          <Link to={'/contact'} className={`mr-5 ${location.pathname==='/contact'?"border-b-2 border-red-500":""} dark:hover:text-blue-500 hover:text-red-500`}>Contact Us</Link>
-          <button className="mr-5 dark:hover:text-blue-500 hover:text-red-500" onClick={togglecolor}>Settings</button>
+        <nav
+          className={`md:mr-auto md:ml-4 md:py-1 md:pl-4 flex flex-wrap items-center text-base justify-center ${
+            dark ? 'md:border-red-900' : 'md:border-black'
+          } md:border-l`}
+        >
+          {[
+            { to: '/', label: 'Home' },
+            { to: '/gallery', label: 'Gallery' },
+            
+            { to: '/team', label: 'Team' },
+            { to: '/events', label: 'Events' },
+            { to: '/contact', label: 'Contact Us' },
+          ].map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className={`mr-5 ${
+                location.pathname === to
+                  ? 'border-b-2 border-red-500'
+                  : ''
+              } ${dark ? 'hover:text-blue-500' : 'hover:text-red-500'}`}
+            >
+              {label}
+            </Link>
+          ))}
+
+          <a
+            href="https://virasat-eta.vercel.app/"
+            className={`mr-5 ${dark ? 'hover:text-blue-500' : 'hover:text-black'}`}
+          >
+            Virasat
+          </a>
         </nav>
+        <button
+          className={`inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 ${
+            dark
+              ? 'bg-gray-100 hover:bg-gray-200 text-black'
+              : 'bg-gray-200 hover:bg-gray-300 text-black border border-black'
+          }`}
+          onClick={onToggleTheme}
+        >
+          <span className="material-symbols-outlined">
+            {dark ? 'Light' : 'Dark'}
+          </span>
+        </button>
+       
+
       </div>
     </header>
   );
-}
+};
 
-export default Header
+export default Header;

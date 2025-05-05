@@ -9,24 +9,35 @@ import Home from './components/Landing.jsx';
 import Contact from './components/Contact.jsx';
 import Video from './components/video.jsx';
 import Login from './components/login.jsx';
-import useColorScheme from './components/useColorScheme.js';
-
+import Mediagallery from './components/Mediagallery.jsx';
+import Profileupdate from './components/profileupdate.jsx';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const dark = useColorScheme('light');
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  const dark = theme === 'dark';
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   return (
-    <div className={`max-w-[1600px] items-center justify-between mx-auto ${dark ? 'dark-theme' : 'light-theme'}`}>
+    <div className={`max-w-[1600px] items-center justify-between mx-auto ${dark ? 'light' : 'dark'}`}>
       <BrowserRouter>
-        <Header dark={dark} />
+        <Header dark={dark} onToggleTheme={toggleTheme} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/video" element={<Video />} />
+          <Route path="/gallery" element={<Mediagallery />} />
           <Route path="/events" element={<Events />} />
           <Route path="/team" element={<PresentTeam />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path ="/member" element={<Profileupdate />} />
           <Route path="*" element={<div>404: Page Not Found</div>} />
         </Routes>
         <Footer dark={dark} />

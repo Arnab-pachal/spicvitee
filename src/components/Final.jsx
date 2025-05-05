@@ -1,77 +1,86 @@
-import React from 'react'
-import TeamImg from './TeamImg'
+import React from 'react';
+import TeamImg from './TeamImg';
 
 function Final() {
+  const members = [
+    { name: "Sagar Das", src: "Sagar", post: "President" },
+    { name: "Debarpan Bandyopadhay", src: "Debarpan2", post: "Vice President" },
+    { name: "Prajnan Karmakar", src: "Prajnan1", post: "General Secretary" },
+    { name: "Bedabrata Brahma", src: "Bedabrata1", post: "Assistant General Secretary" },
+    { name: "Antara Shaw", src: "Antara", post: "Assistant General Secretary and IT wing head" },
+    { name: "Sohan Bera", src: "Sohan", post: "Treasurer" },
+    { name: "Alangkrita Mandal", src: "Alangkrita", post: "Treasurer" },
+    { name: "Soumyadeep Mahato", src: "Soumyadip", post: "Ops Head" },
+    { name: "Soham Singha", src: "Soham", post: "Ops Head" },
+    { name: "Souro Chatterjee", src: "Souro1", post: "Sponsorship Head" },
+    { name: "Satarupa Ray", src: "Satarupa ray", post: "Sponsorship Head" },
+    { name: "Chandra Prakash Singh", src: "CP", post: "Publicity Head and Content Wing Head" },
+    { name: "Satarupa Roy", src: "Satarupa roy", post: "Publicity Head" },
+    { name: "Jai Khanna", src: "Jai khanna", post: "ATH Head and Content Wing Head" },
+    { name: "Madhurima Mondal", src: "Madhurima", post: "ATH Head and Dance Wing Head" },
+    { name: "Prerna Sharma", src: "Prerna", post: "Dance wing Head" },
+    { name: "Subhajeet Mukherjee", src: "Subhajit", post: "Music wing Head" },
+    { name: "Anusurya Bhowmick", src: "Anusurya", post: "Music wing Head" },
+    { name: "Hiresh Shah", src: "Hiresh2", post: "Art wing Head" },
+    { name: "Sujata Rajak", src: "Sujata", post: "Art wing Head" },
+    { name: "Aditya Singh Bisht", src: "Aditya", post: "IT wing Head" },
+    { name: "Arjo Kundu", src: "Arjo", post: "IT wing Head" },
+    { name: "Aniruddha Bandyopadhyay", src: "Aniruddha", post: "IT wing Head" },
+    { name: "Aniket Ghosh", src: "Aniket", post: "Music wing" },
+    { name: "Aparajita Paul", src: "Aparajita", post: "Art wing" },
+    { name: "Sneha Ghosh", src: "Sneha", post: "Content wing" },
+    { name: "Mohaimenul Hok Porag", src: "Porag", post: "Music wing" },
+    { name: "Soumyajit Majumdar", src: "Soumyajit1", post: "Music wing" },
+    { name: "Subhabrata Das", src: "Subhabrata", post: "IT wing" },
+    { name: "Meghna Bhattacharya", src: "Meghna", post: "Content wing" },
+  ];
+
   return (
     <>
-     <TeamImg year='2021' src='Sagar' name="Sagar Das" post={"President"}  />
-     <TeamImg year='2021' src='Debarpan2' name="Debarpan Bandyopadhay" post={"Vice President"}  />
-     <TeamImg year='2021' src='Prajnan1' name="Prajnan Karmakar" post={"General Secretary"}  />
-     <TeamImg year='2021' src='Bedabrata1' name="Bedabrata Brahma" post={" Assistant General Secretary"}  />
-     <TeamImg year='2021' src='Antara' name="Antara Shaw" post={" Assistant General Secretary and IT wing head"}  />
-     <TeamImg year='2021' src='Sohan' name="Sohan Bera" post={"Treasurer"}  />
-     <TeamImg year='2021' src='Alangkrita' name="Alangkrita Mandal" post={"Treasurer"}   />
-     <TeamImg year='2021' src='Soumyadip' name="Soumyadeep Mahato" post={"Ops Head"}  />
-     <TeamImg year='2021' src='Soham' name="Soham Singha"  post={"Ops Head"} />
-     <TeamImg year='2021' src='Souro1' name="Souro Chatterjee" post={" Sponsorship Head"} />
-     <TeamImg year='2021' src='Satarupa ray' name="Satarupa Ray"  post={" Sponsorship Head"} />
-     <TeamImg year='2021' src='CP' name="Chandra Prakash Singh" post={"Publicity Head and Content Wing Head"}  />
-     <TeamImg year='2021' src='Satarupa roy' name="Satarupa Roy"  post={"Publicity Head"}/>
-     <TeamImg year='2021' src='Jai khanna' name="Jai Khanna" post={"ATH Head and Content Wing Head"}  />
-     <TeamImg year='2021' src='Madhurima' name="Madhurima Mondal" post={"ATH Head and Dance Wing Head"}  />
-     <TeamImg year='2021' src='Prerna' name="Prerna Sharma" post={"Dance wing Head"} />
-      <TeamImg year='2021' src='Subhajit' name="Subhajeet Mukherjee" post={"Music wing Head"}  />
-      <TeamImg year='2021' src='Anusurya' name="Anusurya Bhowmick"post={"Music wing Head"} />
-      <TeamImg year='2021' src='Hiresh2' name="Hiresh Shah" post={"Art wing Head"}  />
-      <TeamImg year='2021' src='Sujata' name="Sujata Rajak"post={"Art wing Head"}   />
-      <TeamImg year='2021' src='Aditya' name="Aditya Singh Bisht" post={"IT wing Head"} />
-      <TeamImg year='2021' src='Arjo' name="Arjo Kundu" post={"IT wing Head"}  />
-      <TeamImg year='2021' src='Aniruddha' name="Aniruddha Bandyopadhyay"  post={"IT wing Head"}  />
-
-
-      <TeamImg year='2021' src='Aniket' name="Aniket Ghosh" post={"Music wing"}  />
-      <TeamImg year='2021' src='Aparajita' name="Aparajita Paul" post={"Art wing"}  />
-      <TeamImg year='2021' src='Sneha' name="Sneha Ghosh" post={"Content wing"}  />
-      <TeamImg year='2021' src='Porag' name="Mohaimenul Hok Porag" post={"Music wing"}  />
-      <TeamImg year='2021' src='Soumyajit1' name="Soumyajit Majumdar" post={"Music wing"}  />
-      <TeamImg year='2021' src='Subhabrata' name="Subhabrata Das" post={"IT wing"}  />
-   
-      <TeamImg year='2021' src='Meghna' name="Meghna Bhattacharya" post={"Content wing"} />
-
-
-      {/* <TeamImg year='2021' src='Souro1' name="Souro Chatterjee" post={"IT wing"} /> */}
-      {/* <TeamImg year='2021' src='Aditya' name="Aditya Singh Bisht" post={"IT wing"}  /> */}
-      {/* <TeamImg year='2021' src='Soham' name="Soham Singha" post={"IT wing"}  /> */}
-      {/* <TeamImg year='2021' src='Alangkrita' name="Alangkrita Mandal" post={"Dance wing"}  /> */}
-      {/* <TeamImg year='2021' src='Aniruddha' name="Aniruddha Bandyopadhyay" post={"IT wing"}  /> */}
-      {/* <TeamImg year='2021' src='Aniket' name="Aniket Ghosh" post={"Music wing"}  /> */}
-      {/* <TeamImg year='2021' src='Antara' name="Antara Shaw" post={"Art wing"}  /> */}
-      {/* <TeamImg year='2021' src='Aparajita' name="Aparajita Paul" post={"Art wing"}  /> */}
-      {/* <TeamImg year='2021' src='Sagar' name="Sagar Das" post={"Music wing"}  /> */}
-      {/* <TeamImg year='2021' src='Arjo' name="Arjo Kundu" post={"IT wing"}  /> */}
-      {/* <TeamImg year='2021' src='Bedabrata1' name="Bedabrata Brahma" post={"Dance wing"}  /> */}
-      {/* <TeamImg year='2021' src='CP' name="Chandra Prakash Singh" post={"Content wing"}  /> */}
-      {/* <TeamImg year='2021' src='Debarpan2' name="Debarpan Bandyopadhay" post={"IT wing"}  /> */}
-      {/* <TeamImg year='2021' src='Hiresh2' name="Hiresh Shah" post={"Art wing"}  /> */}
-      {/* <TeamImg year='2021' src='Jai khanna' name="Jai Khanna" post={"Content wing"}  /> */}
-      {/* <TeamImg year='2021' src='Madhurima' name="Madhurima Mondal" post={"Dance wing"} /> */}
-      {/* <TeamImg year='2021' src='Meghna' name="Meghna Bhattacharya" post={"Content wing"} /> */}
-      {/* <TeamImg year='2021' src='Porag' name="Mohaimenul Hok Porag" post={"Music wing"}  /> */}
-      {/* <TeamImg year='2021' src='Anusurya' name="Anusurya Bhowmick" post={"Music wing"}  /> */}
-      {/* <TeamImg year='2021' src='Prajnan1' name="Prajnan Karmakar" post={"Dance wing"}  /> */}
-      {/* <TeamImg year='2021' src='Prerna' name="Prerna Sharma" post={"Dance wing"} /> */}
-      {/* <TeamImg year='2021' src='Satarupa ray' name="Satarupa Ray" post={"Dance wing"}  /> */}
-      {/* <TeamImg year='2021' src='Satarupa roy' name="Satarupa Roy" post={"Dance wing"}  /> */}
-      {/* <TeamImg year='2021' src='Sneha' name="Sneha Ghosh" post={"Content wing"}  /> */}
-      {/* <TeamImg year='2021' src='Sohan' name="Sohan Bera" post={"IT wing"}  /> */}
-      {/* <TeamImg year='2021' src='Souharda' name="Souharda Shankar" post={"Music wing"}  /> */}
-      {/* <TeamImg year='2021' src='Soumyadip' name="Soumyadeep Mahato" post={"Art wing"}  /> */}
-      {/* <TeamImg year='2021' src='Soumyajit1' name="Soumyajit Majumdar" post={"Music wing"}  /> */}
-      {/* <TeamImg year='2021' src='Subhabrata' name="Subhabrata Das" post={"IT wing"}  /> */}
-      {/* <TeamImg year='2021' src='Subhajit' name="Subhajeet Mukherjee" post={"Music wing"}  /> */}
-      {/* <TeamImg year='2021' src='Sujata' name="Sujata Rajak" post={"Art wing"}  /> */}
+      {members.map((member, idx) => (
+        <DynamicTeamImg
+          key={idx}
+          year="2021"
+          name={member.name}
+          src={member.src}
+          post={member.post}
+        />
+      ))}
     </>
-  )
+  );
 }
 
-export default Final
+function DynamicTeamImg({ name, src, year, post }) {
+  const [linkedin, setLinkedin] = React.useState('');
+  const [insta, setInsta] = React.useState('');
+
+  React.useEffect(() => {
+    const fetchLinks = async () => {
+      try {
+        const res = await fetch(`http://localhost:8080/getmembers?name=${name}&year=${year}`);
+        const data = await res.json();
+        const linkedin = data[0]?.Linkedinurl;
+        const insta = data[0]?.Instaurl;
+        if (linkedin) setLinkedin(linkedin);
+        if (insta) setInsta(insta);
+      } catch (err) {
+        console.error(`Failed to fetch links for ${name}:`, err);
+      }
+    };
+
+    fetchLinks();
+  }, [name, year]);
+
+  return (
+    <TeamImg
+      name={name}
+      src={src}
+      post={post}
+      year={year}
+      linkedin={linkedin}
+      insta={insta}
+    />
+  );
+}
+
+export default Final;

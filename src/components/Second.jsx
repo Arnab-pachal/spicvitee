@@ -1,38 +1,84 @@
-import React from 'react'
-import TeamImg from './TeamImg'
+import React from 'react';
+import TeamImg from './TeamImg';
 
 function Second() {
+  const members = [
+    { name: "Prasun Biswas", src: "prasun" },
+    { name: "Prottoy Saha Hridoy", src: "prottoy" },
+    { name: "Amarnath Kumar", src: "amarnath" },
+    { name: "Sutanuka Das", src: "sutanuka" },
+    { name: "Prerana Banik", src: "prerana" },
+    { name: "Vikash Choudhary", src: "vikash" },
+    { name: "Arnab Maji", src: "maji" },
+    { name: "Arnab Pachal", src: "pachal" },
+    { name: "Soumitrisha Dutta", src: "soumi" },
+    { name: "Mayukh Das", src: "mayukh" },
+    { name: "Ananya Adhikary", src: "ananya" },
+    { name: "Antara Mondal", src: "antara" },
+    { name: "Arnab Paul", src: "arnabpaul" },
+    { name: "Mahi Kaithwar", src: "mahi" },
+    { name: "Archita Sarkar", src: "archita" },
+    { name: "Sayantika Sen", src: "sayantika" },
+    { name: "Puja Basuli", src: "puja" },
+    { name: "Suchandra Nandi", src: "suchandra" },
+    { name: "Sandip Roy", src: "sandip" },
+    { name: "Saheli Mahanty", src: "saheli" },
+    { name: "Aiswarya Mohan", src: "mohan" },
+    { name: "Pradipta Narayan Pal", src: "pradipta" },
+    { name: "Sukanya Naskar", src: "sukanya" },
+    { name: "Swapnil Sinha", src: "swapnil" },
+    { name: "Deba Arpita Karan", src: "deba" },
+    { name: "Anwesha Panda", src: "anwesha" },
+    { name: "Snehanshu Ghatak", src: "snehanshu" }
+  ];
+
   return (
     <>
-      <TeamImg year='2023' src='prasun' name="Prasun Biswas"  />
-      <TeamImg year='2023' src='prottoy' name="Prottoy Saha Hridoy"  />
-      <TeamImg year='2023' src='amarnath' name="Amarnath Kumar"  />
-      <TeamImg year='2023' src='sutanuka' name="Sutanuka Das"  />
-      <TeamImg year='2023' src='prerana' name="Prerana Banik"  />
-      <TeamImg year='2023' src='vikash' name="Vikash Choudhary"  />
-      <TeamImg year='2023' src='maji' name="Arnab Maji"  />
-      <TeamImg year='2023' src='pachal' name="Arnab Pachal"  />
-      <TeamImg year='2023' src='soumi' name="Soumitrisha Dutta"  />
-      <TeamImg year='2023' src='mayukh' name="Mayukh Das"  />
-      <TeamImg year='2023' src='ananya' name="Ananya Adhikary "  />
-      <TeamImg year='2023' src='antara' name="Antara Mondal"  />
-      <TeamImg year='2023' src='arnabpaul' name="Arnab Paul"  />
-      <TeamImg year='2023' src='mahi' name="Mahi Kaithwar"  />
-      <TeamImg year='2023' src='archita' name="Archita Sarkar"  />
-      <TeamImg year='2023' src='sayantika' name="Sayantika Sen"  />
-      <TeamImg year='2023' src='puja' name="Puja Basuli"  />
-      <TeamImg year='2023' src='suchandra' name="Suchandra Nandi"  />
-      <TeamImg year='2023' src='sandip' name="Sandip Roy"  />
-      <TeamImg year='2023' src='saheli' name="Saheli Mahanty"  />
-      <TeamImg year='2023' src='mohan' name="Aiswarya Mohan"  />
-      <TeamImg year='2023' src='pradipta' name="Pradipta Narayan Pal"  />
-      <TeamImg year='2023' src='sukanya' name="Sukanya Naskar"  />
-      <TeamImg year='2023' src='swapnil' name="Swapnil Sinha"  />
-      <TeamImg year='2023' src='deba' name="Deba Arpita Karan"  />
-      <TeamImg year='2023' src='anwesha' name="Anwesha Panda"  />
-      <TeamImg year='2023' src='snehanshu' name="Snehanshu Ghatak"  />
+      {members.map((member, idx) => (
+        <DynamicTeamImg
+          key={idx}
+          year="2023"
+          name={member.name}
+          src={member.src}
+        />
+      ))}
     </>
-  )
+  );
 }
 
-export default Second
+function DynamicTeamImg({ name, src, year }) {
+  const [linkedin, setLinkedin] = React.useState('');
+  const [insta, setInsta] = React.useState('');
+
+  React.useEffect(() => {
+    const fetchLinks = async () => {
+      try {
+        const res = await fetch(`http://localhost:8080/getmembers?name=${name}&year=${year}`);
+        const data = await res.json();
+        console.log(data);
+        const linkedin = data[0]?.Linkedinurl;
+        const insta = data[0]?.Instaurl;
+        if (linkedin) setLinkedin(linkedin);
+        if (insta) setInsta(insta);
+        
+      } catch (err) {
+        console.error(`Failed to fetch links for ${name}:`, err);
+      }
+    };
+
+    fetchLinks();
+  }, [name, year]);
+console.log(linkedin, insta);
+  return (
+    <TeamImg
+      name={name}
+      src={src}
+      post="" // Empty string since post is not provided
+      year={year}
+      linkedin={linkedin}
+      insta={insta}
+    />
+  );
+}
+
+export default Second;

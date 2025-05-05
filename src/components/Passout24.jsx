@@ -1,32 +1,75 @@
-import React from 'react'
-import TeamImg from './TeamImg'
+import React from 'react';
+import TeamImg from './TeamImg';
 
 function Passout24() {
+  const members = [
+    { name: "Saikat Sarkar", src: "saikat", post: "President" },
+    { name: "Hridikalpa Das", src: "hridikalpa", post: "Vice President and Music Wing Head" },
+    { name: "Ankon Ghosh", src: "ankon", post: "General Secretary" },
+    { name: "Abhinandan Mandal", src: "abhinandan", post: "Assistant General Secretary" },
+    { name: "Biswanath Chakraborty", src: "biswanath", post: "Treasurer" },
+    { name: "Pritasmi Bhattacharya", src: "pritasmi", post: "Treasurer" },
+    { name: "Drishita Nag", src: "drishita", post: "Sponsorship Head" },
+    { name: "Dipranjan Dey", src: "dipranjan", post: "Sponsorship Head" },
+    { name: "Debrup Chakroborty", src: "debrup", post: "Publicity Head" },
+    { name: "Prativa Sahu", src: "prativa", post: "Publicity Head" },
+    { name: "Joyraj Longjam", src: "joyraj", post: "ATH Head" },
+    { name: "Harshita Yenna", src: "harshitha", post: "ATH Head" },
+    { name: "Souvik Pal", src: "souvik", post: "IT Wing Head" },
+    { name: "Debasmita Das", src: "debasmita", post: "IT Wing Head" },
+    { name: "Harsh Guha", src: "harsh", post: "Music Wing Head" },
+    { name: "Pratiti Pradhan", src: "pratiti", post: "Dance Wing Head" },
+    { name: "Boddu Harika", src: "harika", post: "Dance Wing Head" },
+    { name: "Adarsh Arya", src: "adarsh", post: "Content Wing Head" },
+    { name: "Sharvani Reddy", src: "sharvani", post: "Content Wing Head" },
+    { name: "Arpan Sardar", src: "arpan", post: "Art Wing Head" },
+    { name: "Priyanshi Singh", src: "priyanshi", post: "Art Wing Head" },
+  ];
+
   return (
     <>
-        <TeamImg year='2020' src="saikat" name="Saikat Sarkar" post="President" />
-        <TeamImg year='2020' src="hridikalpa" name="Hridikalpa Das" post="Vice President and Music Wing Head" />
-        <TeamImg year='2020' src="ankon" name="Ankon Ghosh" post="General Secretary" />
-        <TeamImg year='2020' src="abhinandan" name="Abhinandan Mandal" post="Assistant General Secretary" />
-        <TeamImg year='2020' src="biswanath" name="Biswanath Chakraborty" post="Treasurer" />
-        <TeamImg year='2020' src="pritasmi" name="Pritasmi Bhattacharya" post="Treasurer" />
-        <TeamImg year='2020' src="drishita" name="Drishita Nag" post="Sponsorship Head" />
-        <TeamImg year='2020' src="dipranjan" name="Dipranjan Dey" post="Sponsorship Head" />
-        <TeamImg year='2020' src="debrup" name="Debrup Chakroborty" post="Publicity Head" />
-        <TeamImg year='2020' src="prativa" name="Prativa Sahu" post="Publicity Head" />
-        <TeamImg year='2020' src="joyraj" name="Joyraj Longjam" post="ATH Head" />
-        <TeamImg year='2020' src="harshitha" name="Harshita Yenna" post="ATH Head" />
-        <TeamImg year='2020' src="souvik" name="Souvik Pal" post="IT Wing Head" />
-        <TeamImg year='2020' src="debasmita" name="Debasmita Das" post="IT Wing Head" />
-        <TeamImg year='2020' src="harsh" name="Harsh Guha" post="Music Wing Head" />
-        <TeamImg year='2020' src="pratiti" name="Pratiti Pradhan" post="Dance Wing Head" />
-        <TeamImg year='2020' src="harika" name="Boddu Harika" post="Dance Wing Head" />
-        <TeamImg year='2020' src="adarsh" name="Adarsh Arya" post="Content Wing Head" />
-        <TeamImg year='2020' src="sharvani" name="Sharvani Reddy" post="Content Wing Head" />
-        <TeamImg year='2020' src="arpan" name="Arpan Sardar" post="Art Wing Head" />
-        <TeamImg year='2020' src="priyanshi" name="Priyanshi Singh" post="Art Wing Head" />
+      {members.map((member, idx) => (
+        <DynamicTeamImg
+          key={idx}
+          year="2020"
+          name={member.name}
+          src={member.src}
+          post={member.post}
+        />
+      ))}
     </>
-  )
+  );
 }
 
-export default Passout24
+function DynamicTeamImg({ name, src, post, year }) {
+  const [linkedin, setLinkedin] = React.useState('');
+  const [insta, setInsta] = React.useState('');
+
+  React.useEffect(() => {
+    const fetchLinks = async () => {
+      try {
+        const res = await fetch(`http://localhost:8080/getmembers?name=${name}&year=${year}`);
+        const data = await res.json();
+        if (data.linkedin) setLinkedin(data.linkedin);
+        if (data.insta) setInsta(data.insta);
+      } catch (err) {
+        console.error(`Failed to fetch for ${name}`, err);
+      }
+    };
+
+    fetchLinks();
+  }, [name, year]);
+
+  return (
+    <TeamImg
+      name={name}
+      src={src}
+      post={post}
+      year={year}
+      linkedin={linkedin}
+      insta={insta}
+    />
+  );
+}
+
+export default Passout24;

@@ -1,20 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import Passout24 from './Passout24.jsx';
 import Final from './Final.jsx';
 import PreFinal from './PreFinal.jsx';
 import Second from './Second.jsx';
+import { useNavigate } from 'react-router-dom';
+import { getItemWithExpiry } from './storage'; // adjust path
+
 
 const PresentTeam = () => {
+  
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const user = getItemWithExpiry("s-id");
+    setIsLoggedIn(!!user);
+  }, []);
+  const handlechangeProfile = () => {
+    navigate("/member");
+  };
  const [year, setYear] = useState({passout24:1,final:0,prefinal:0, second:0})
   return (
     <>
+       {isLoggedIn && <div className="text-center mt-4">
+          <button
+            onClick={handlechangeProfile}
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+           Update Profile
+          </button>
+        </div> }
    
     <div className="px-4 py-16 mx-auto md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl mb-4 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
         <div>
         </div>
-        <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+        <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto">
           <span className="relative inline-block">
+            
             <span className="relative">Meet</span>
           </span>{" "}
           our Team - Without whom, there is no Spicmacay
