@@ -26,7 +26,7 @@ function Pixels() {
     // Fetch albums data from backend
     const fetchAlbums = async () => {
       try {
-        const response = await fetch('http://localhost:8080/aditiget');
+        const response = await fetch('https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/aditiget');
         const data = await response.json();
         console.log(data)
         if (response.ok) {
@@ -82,7 +82,7 @@ function Pixels() {
     }
 
     try {
-      const response = await fetch('http://localhost:8080/aditiupload', {
+      const response = await fetch('https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/aditiupload', {
         method: 'POST',
         body: formDataToSend,
         

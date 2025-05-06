@@ -53,7 +53,7 @@ function DynamicTeamImg({ name, src, year }) {
   React.useEffect(() => {
     const fetchLinks = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/getmembers?name=${name}&year=${year}`);
+        const res = await fetch(`https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/getmembers?name=${name}&year=${year}`);
         const data = await res.json();
         console.log(data);
         const linkedin = data[0]?.Linkedinurl;

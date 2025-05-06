@@ -50,9 +50,10 @@ const VideoGallery = ({isLoggedIn}) => {
     formData.append("video", videoFile);
 
     try {
-      const response = await fetch("https://http:localhost:8080/uploadvideo", {
+      const response = await fetch("https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/uploadvideo", {
         method: "POST",
         body: formData,
+        urlencoded: true,
       });
 
       if (response.ok) {
@@ -74,7 +75,7 @@ const VideoGallery = ({isLoggedIn}) => {
 
   const fetchVideos = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/getvideo");
+      const response = await axios.get("https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/getvideo");
       setVideos(response.data);
     } catch (error) {
       console.error("Error fetching videos:", error);
@@ -92,7 +93,7 @@ const VideoGallery = ({isLoggedIn}) => {
       navigate("/login");
     } else {
       try {
-        await axios.delete(`http://localhost:8080/deletevideo?id=${id}`);
+        await axios.delete(`https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/deletevideo?id=${id}`);
         setVideos(videos.filter((video) => video._id !== id)); // Remove video from state
       } catch (err) {
         console.error("Error deleting video:", err);

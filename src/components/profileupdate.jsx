@@ -71,7 +71,7 @@ const MemberForm = ({ mode, memberId = null }) => {
   useEffect(() => {
     if (mode === "update" && memberId) {
       axios
-        .get(`http://localhost:8080/getmembers?id=${memberId}`)
+        .get(`https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/getmembers?id=${memberId}`)
         .then((res) => {
           const { name, instaurl, linkedinurl, wing, year, position } = res.data;
           setFormData({ name, instaurl, linkedinurl, wing, year, position });
@@ -90,13 +90,13 @@ const MemberForm = ({ mode, memberId = null }) => {
 
     try {
       if (mode === "update") {
-        await axios.post(`http://localhost:8080/updatemember?id=${memberId}`, formData);
+        await axios.post(`https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/updatemember?id=${memberId}`, formData);
         alert("Member updated successfully");
       } else {
         const data = new FormData();
         Object.entries(formData).forEach(([key, val]) => data.append(key, val));
 
-        await axios.post("http://localhost:8080/uploadmembers", data, {
+        await axios.post("https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/uploadmembers", data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -146,7 +146,7 @@ const DeleteForm = () => {
   const handleDelete = async () => {
     if (!id) return alert("Enter a member ID");
     try {
-      await axios.delete(`http://localhost:8080/deletemember?id=${id}`);
+      await axios.delete(`https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/deletemember?id=${id}`);
       alert("Member deleted successfully");
       setId("");
     } catch (err) {

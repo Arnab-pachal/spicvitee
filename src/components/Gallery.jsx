@@ -46,7 +46,7 @@ const PhotoGallery = ({isLoggedIn}) => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:8080/uploadphoto", {
+      const response = await fetch("https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/uploadphoto", {
         method: "POST",
         body: formData,
       });
@@ -71,7 +71,7 @@ const PhotoGallery = ({isLoggedIn}) => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/getphoto");
+        const response = await axios.get("https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/getphoto");
         setPhotos(response.data);
       } catch (error) {
         console.error("Error fetching photos:", error);
@@ -87,7 +87,7 @@ const PhotoGallery = ({isLoggedIn}) => {
       navigate("/login");
     } else {
       try {
-        await axios.delete(`http://localhost:8080/deletephoto?id=${id}`);
+        await axios.delete(`https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/deletephoto?id=${id}`);
         setPhotos(photos.filter((photo) => photo._id !== id)); // Remove photo from state
       } catch (err) {
         console.error("Error deleting photo:", err);
