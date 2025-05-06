@@ -5,8 +5,8 @@ import App from './App.jsx';
 
 // The root element is #root inside the body of the index.html
 createRoot(document.body).render(
-  <StrictMode>
+ 
     <App />
-  </StrictMode>
+ 
 );
 Explanatio

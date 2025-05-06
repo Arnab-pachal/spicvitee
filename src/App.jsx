@@ -12,7 +12,7 @@ import Login from './components/login.jsx';
 import Mediagallery from './components/Mediagallery.jsx';
 import Profileupdate from './components/profileupdate.jsx';
 import { useEffect, useState } from 'react';
-
+import Pixels from './components/Pixels.jsx';
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
   const dark = theme === 'dark';
@@ -38,6 +38,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path ="/member" element={<Profileupdate />} />
+          <Route path="/pixels" element ={<Pixels/>}/>
           <Route path="*" element={<div>404: Page Not Found</div>} />
         </Routes>
         <Footer dark={dark} />
