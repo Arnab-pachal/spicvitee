@@ -83,7 +83,7 @@ const Login = () => {
     let res = await response.json();
 
     if (response.ok) {
-      await setItemWithExpiry("s-id", 1234, 10*60 * 1000);
+      await setItemWithExpiry("s-id", 1234, 60*24*60 * 1000);
       alert("You are logged in");
       navigate("/");
     } else {

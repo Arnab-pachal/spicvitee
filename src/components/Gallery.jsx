@@ -10,7 +10,6 @@ const PhotoGallery = ({isLoggedIn}) => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
-  // Function to get item with expiry from localStorage
   async function getItemWithExpiry(key) {
     const itemStr = localStorage.getItem(key);
     if (!itemStr) return null;
@@ -47,7 +46,7 @@ const PhotoGallery = ({isLoggedIn}) => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("https://spicmacayback.onrender.com/uploadphoto", {
+      const response = await fetch("http://localhost:8080/uploadphoto", {
         method: "POST",
         body: formData,
       });
@@ -72,7 +71,7 @@ const PhotoGallery = ({isLoggedIn}) => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const response = await axios.get("https://spicmacayback.onrender.com/getphoto");
+        const response = await axios.get("http://localhost:8080/getphoto");
         setPhotos(response.data);
       } catch (error) {
         console.error("Error fetching photos:", error);
@@ -88,7 +87,7 @@ const PhotoGallery = ({isLoggedIn}) => {
       navigate("/login");
     } else {
       try {
-        await axios.delete(`https://spicmacayback.onrender.com/deletephoto?id=${id}`);
+        await axios.delete(`http://localhost:8080/deletephoto?id=${id}`);
         setPhotos(photos.filter((photo) => photo._id !== id)); // Remove photo from state
       } catch (err) {
         console.error("Error deleting photo:", err);

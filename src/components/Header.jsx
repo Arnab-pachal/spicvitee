@@ -80,6 +80,16 @@ const Header = ({ dark, onToggleTheme }) => {
 
           {/* Contact Us Link */}
           <Link
+            to="/pixels"
+            className={`mr-5 ${
+              location.pathname === '/pixels'
+                ? 'border-b-2 border-red-500'
+                : ''
+            } ${dark ? 'hover:text-blue-500' : 'hover:text-red-500'}`}
+          >
+            Pixels
+          </Link>
+          <Link
             to="/contact"
             className={`mr-5 ${
               location.pathname === '/contact'
