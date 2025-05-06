@@ -49,6 +49,7 @@ const PhotoGallery = ({isLoggedIn}) => {
       const response = await fetch("https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/uploadphoto", {
         method: "POST",
         body: formData,
+        urlencoded: true,
       });
 
       if (response.ok) {
@@ -71,7 +72,7 @@ const PhotoGallery = ({isLoggedIn}) => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const response = await axios.get("https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/getphoto");
+        const response = await axios.get("http://spicmacayback.vercel.app/getphoto");
         setPhotos(response.data);
       } catch (error) {
         console.error("Error fetching photos:", error);
