@@ -46,7 +46,7 @@ const PhotoGallery = ({isLoggedIn}) => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/uploadphoto", {
+      const response = await fetch("http://spicmacayback.vercel.app/uploadphoto", {
         method: "POST",
         body: formData,
         urlencoded: true,
@@ -88,7 +88,7 @@ const PhotoGallery = ({isLoggedIn}) => {
       navigate("/login");
     } else {
       try {
-        await axios.delete(`https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.app/deletephoto?id=${id}`);
+        await axios.delete(`http://spicmacayback.vercel.app/deletephoto?id=${id}`);
         setPhotos(photos.filter((photo) => photo._id !== id)); // Remove photo from state
       } catch (err) {
         console.error("Error deleting photo:", err);
