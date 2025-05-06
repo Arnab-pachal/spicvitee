@@ -48,7 +48,7 @@ function DynamicTeamImg({ name, src, post, year }) {
   React.useEffect(() => {
     const fetchLinks = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/getmembers?name=${name}&year=${year}`);
+        const res = await fetch(`https://localhost:8080/getmembers?name=${name}&year=${year}`);
         const data = await res.json();
         if (data.linkedin) setLinkedin(data.linkedin);
         if (data.insta) setInsta(data.insta);

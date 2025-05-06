@@ -71,7 +71,7 @@ const MemberForm = ({ mode, memberId = null }) => {
   useEffect(() => {
     if (mode === "update" && memberId) {
       axios
-        .get(`http://spicmacayback.vercel.app/getmembers?id=${memberId}`)
+        .get(`https://spicmacayback.vercel.app/getmembers?id=${memberId}`)
         .then((res) => {
           const { name, instaurl, linkedinurl, wing, year, position } = res.data;
           setFormData({ name, instaurl, linkedinurl, wing, year, position });
@@ -90,13 +90,13 @@ const MemberForm = ({ mode, memberId = null }) => {
 
     try {
       if (mode === "update") {
-        await axios.post(`http://spicmacayback.vercel.app/updatemember?id=${memberId}`, formData);
+        await axios.post(`https://spicmacayback.vercel.app/updatemember?id=${memberId}`, formData);
         alert("Member updated successfully");
       } else {
         const data = new FormData();
         Object.entries(formData).forEach(([key, val]) => data.append(key, val));
 
-        await axios.post("http://spicmacayback.vercel.app/uploadmembers", data, {
+        await axios.post("https://spicmacayback.vercel.app/uploadmembers", data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -146,7 +146,7 @@ const DeleteForm = () => {
   const handleDelete = async () => {
     if (!id) return alert("Enter a member ID");
     try {
-      await axios.delete(`http://spicmacayback.vercel.app/deletemember?id=${id}`);
+      await axios.delete(`https://spicmacayback.vercel.app/deletemember?id=${id}`);
       alert("Member deleted successfully");
       setId("");
     } catch (err) {
