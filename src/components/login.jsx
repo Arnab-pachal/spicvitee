@@ -49,7 +49,7 @@ const Login = () => {
     e.preventDefault();
     console.log("Submit button clicked with Username:", input);
   
-    const response = await fetch("https://spicmacayback.vercel.app/check", {
+    const response = await fetch("http://localhost:8080/check", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -72,7 +72,7 @@ const Login = () => {
     e.preventDefault();
     console.log("Submit button clicked with OTP:", otp);
 
-    const response = await fetch("https://spicmacayback.vercel.app/verify-otp", {
+    const response = await fetch("http://localhost:8080/verify-otp", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -83,7 +83,7 @@ const Login = () => {
     let res = await response.json();
 
     if (response.ok) {
-      await setItemWithExpiry("s-id", 1234, 60*24*60 * 1000);
+      await setItemWithExpiry("s-id", 1234, 5*60 * 1000);
       alert("You are logged in");
       navigate("/");
     } else {

@@ -60,16 +60,16 @@ const ContactUsWithMap = () => {
             <br />
             <br />
             <div className="flex items-start space-x-3">
-              <span>📧Gmail :</span>
-              <div>hello@loremipsum.com</div>
+              <span>📧   Gmail:</span>
+              <div>spicmacay.nitd@gmail.com</div>
             </div>
             <div className="flex items-start space-x-3">
               <span>📠</span>
-              <div>+3356 1589 2105</div>
+              <div>ananya - +91 9531611417</div>
             </div>
             <div className="flex items-start space-x-3">
               <span>📠</span>
-              <div>+3356 1589 2100</div>
+              <div>ritayan - +91 91233 59208</div>
             </div>
           </div>
         </div>
