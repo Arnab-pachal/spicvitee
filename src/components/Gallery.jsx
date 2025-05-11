@@ -46,10 +46,11 @@ const PhotoGallery = ({isLoggedIn}) => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("https://spicmacayback.vercel.app/uploadphoto", {
+      const response = await fetch("https://spicmacayback.vercel.app/gallery/photoupload", {
         method: "POST",
         body: formData,
         urlencoded: true,
+        credentials: "include",
       });
 
       if (response.ok) {
@@ -72,7 +73,7 @@ const PhotoGallery = ({isLoggedIn}) => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const response = await axios.get("https://spicmacayback.vercel.app/getphoto");
+        const response = await axios.get("https://spicmacayback.vercel.app/gallery/photoget");
         setPhotos(response.data);
       } catch (error) {
         console.error("Error fetching photos:", error);
@@ -88,7 +89,7 @@ const PhotoGallery = ({isLoggedIn}) => {
       navigate("/login");
     } else {
       try {
-        await axios.delete(`https://spicmacayback.vercel.app/deletephoto?id=${id}`);
+        await axios.delete(`https://spicmacayback.vercel.app/gallery/photodelete?id=${id}`);
         setPhotos(photos.filter((photo) => photo._id !== id)); // Remove photo from state
       } catch (err) {
         console.error("Error deleting photo:", err);

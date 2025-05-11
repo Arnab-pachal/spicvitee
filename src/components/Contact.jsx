@@ -21,7 +21,7 @@ const ContactUsWithMap = () => {
     }
     e.preventDefault();
     try {
-      const response = await fetch('https://spicmacayback-85nr3lgvw-arnab-pachals-projects.vercel.appcontact', {
+      const response = await fetch('https://spicmacayback.vercel.app/valid/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

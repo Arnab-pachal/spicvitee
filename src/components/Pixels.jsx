@@ -26,7 +26,7 @@ function Pixels() {
     // Fetch albums data from backend
     const fetchAlbums = async () => {
       try {
-        const response = await fetch('https://spicmacayback.vercel.app/aditiget');
+        const response = await fetch('http://localhost:8080/aditi/aditiget');
         const data = await response.json();
         console.log(data)
         if (response.ok) {
@@ -82,7 +82,7 @@ function Pixels() {
     }
 
     try {
-      const response = await fetch('https://spicmacayback.vercel.app/aditiupload', {
+      const response = await fetch('http://localhost:8080/aditi/aditiupload', {
         method: 'POST',
         body: formDataToSend,
         
